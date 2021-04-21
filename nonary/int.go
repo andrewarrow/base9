@@ -16,6 +16,11 @@ func NewInt(a int) *Int {
 	return &n
 }
 
+// 1 0 0 0 1
+// 1 0 0 1 0
+// 1 0 1 0 0
+// 1 0 1 1 1
+// 1 1 0 0 0
 func (i *Int) Add(a int) *Int {
 	end := len(i.List) - 1
 	i.List[end].Val++
@@ -28,17 +33,20 @@ func (i *Int) Add(a int) *Int {
 
 func (i *Int) HandleBump(limit int) {
 	// 8, 9 - 1
-	end := len(i.List) - 1
-	i.List[end].Val = 0
 	// 8, 0
 	if len(i.List) == limit {
 		fb := FancyBit{}
 		fb.Val = 1
-		i.List = append([]FancyBit{fb}, i.List...)
+		foo := []FancyBit{}
+		for j := 0; j < len(i.List); j++ {
+			fb := FancyBit{}
+			fb.Val = 0
+			foo = append(foo, fb)
+		}
+		i.List = append([]FancyBit{fb}, foo...)
 	} else {
 		i.List[0].Val++
 		if i.List[0].Val > 8 {
-			i.List[0].Val = 0
 			i.HandleBump(limit + 1)
 		}
 	}

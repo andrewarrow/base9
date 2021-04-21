@@ -7,7 +7,7 @@ import (
 
 func main() {
 	thing := nonary.NewInt(0)
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1000; i++ {
 		thing = thing.Add(1)
 		fmt.Println(thing)
 	}
