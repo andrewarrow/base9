@@ -7,27 +7,8 @@ import (
 
 func main() {
 	thing := nonary.NewInt(0)
-	thing = thing.Add(1)
-	fmt.Println(thing)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	fmt.Println(thing)
-	thing = thing.Add(1)
-	fmt.Println(thing)
-	thing = thing.Add(1)
-	fmt.Println(thing)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	thing = thing.Add(1)
-	fmt.Println(thing)
+	for i := 0; i < 100; i++ {
+		thing = thing.Add(1)
+		fmt.Println(thing)
+	}
 }
