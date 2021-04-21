@@ -7,5 +7,6 @@ import (
 
 func main() {
 	thing := nonary.NewInt(0)
+	thing = thing.Add(1)
 	fmt.Println(thing)
 }
