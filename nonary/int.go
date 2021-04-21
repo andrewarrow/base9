@@ -17,15 +17,16 @@ func NewInt(a int) *Int {
 }
 
 func (i *Int) Add(a int) *Int {
-	i.List[len(i.List)-1].Val++
-	if i.List[0].Val > 8 {
-		i.List[0].Val = 0
+	end := len(i.List) - 1
+	i.List[end].Val++
+	if i.List[end].Val > 8 {
+		i.List[end].Val = 0
 		if len(i.List) == 1 {
 			fb := FancyBit{}
 			fb.Val = 1
 			i.List = append([]FancyBit{fb}, i.List...)
 		} else {
-			i.List[1].Val++
+			i.List[0].Val++
 		}
 	}
 	return i

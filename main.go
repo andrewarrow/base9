@@ -21,4 +21,13 @@ func main() {
 	fmt.Println(thing)
 	thing = thing.Add(1)
 	fmt.Println(thing)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	thing = thing.Add(1)
+	fmt.Println(thing)
 }
