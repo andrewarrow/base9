@@ -9,7 +9,20 @@ func NewInt(a int) *Int {
 	n.List = []byte{0}
 	return &n
 }
-func (i *Int) Incr() *Int {
+
+func (i *Int) Add(a int) {
+	if a > 0 {
+		for j := 0; j < a; j++ {
+			i.Incr()
+		}
+		return
+	}
+	for j := 0; j < a*-1; j++ {
+		i.Decr()
+	}
+}
+
+func (i *Int) Incr() {
 	overflow := false
 	for j := len(i.List) - 1; j > -1; j-- {
 		i.List[j]++
@@ -25,10 +38,8 @@ func (i *Int) Incr() *Int {
 	if overflow {
 		i.List = append([]byte{1}, i.List...)
 	}
-
-	return i
 }
-func (i *Int) Decr() *Int {
+func (i *Int) Decr() {
 	underflow := false
 	for j := len(i.List) - 1; j > -1; j-- {
 
@@ -49,6 +60,4 @@ func (i *Int) Decr() *Int {
 		}
 		i.List = newList
 	}
-
-	return i
 }
