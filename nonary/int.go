@@ -10,6 +10,12 @@ package nonary
 	if there is no digit to your left,
 	there is now, and it's a one
 
+	&{[1 8]}
+&{[2 1 0]}
+
+you have to consume the 1, you don't assume this is case for whole new digit
+	&{[2 0]}
+
 */
 
 type Int struct {
@@ -31,6 +37,7 @@ func (i *Int) Inc() *Int {
 	for j := len(i.List) - 1; j > -1; j-- {
 		toMyLeft := i.fromDigitPerspective(j)
 		if toMyLeft == false {
+			i.List = append([]byte{1}, i.List...)
 			break
 		}
 	}
@@ -42,10 +49,10 @@ func (i *Int) fromDigitPerspective(digit int) bool {
 
 	if val == 8 {
 		i.List[digit] = 0
-		return true
+		return false
 	}
 	i.List[digit]++
-	return false
+	return true
 }
 
 /*
