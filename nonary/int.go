@@ -28,6 +28,27 @@ func NewInt(a int) *Int {
 	return &n
 }
 func (i *Int) Inc() *Int {
+	overflow := false
+	for j := len(i.List) - 1; j > -1; j-- {
+		i.List[j]++
+
+		if i.List[j] == 9 {
+			i.List[j] = 0
+			overflow = true
+		} else {
+			overflow = false
+			break
+		}
+	}
+	if overflow {
+		i.List = append([]byte{1}, i.List...)
+	}
+
+	return i
+}
+
+/*
+func (i *Int) Inc() *Int {
 
 	// i have no idea how long the i.List is
 	// but I can recurse
@@ -55,7 +76,6 @@ func (i *Int) fromDigitPerspective(digit int) bool {
 	return true
 }
 
-/*
 func (i *Int) Add2(a int) *Int {
 	end := len(i.List) - 1
 	i.List[end].Val++
