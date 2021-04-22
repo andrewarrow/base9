@@ -8,7 +8,7 @@ import (
 func main() {
 	thing := nonary.NewInt(0)
 	for i := 0; i < 1000; i++ {
-		thing = thing.Add(1)
+		thing = thing.Inc()
 		fmt.Println(thing)
 	}
 }

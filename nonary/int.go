@@ -21,8 +21,31 @@ func NewInt(a int) *Int {
 	n.List = []byte{0}
 	return &n
 }
-func (i *Int) Add(a int) *Int {
+func (i *Int) Inc() *Int {
+
+	// i have no idea how long the i.List is
+	// but I can recurse
+	// cases are
+	// 1. just incr me
+	// 2. set me to zero but call Inc again on digit to my left
+	for j := len(i.List) - 1; j > -1; j-- {
+		toMyLeft := i.fromDigitPerspective(j)
+		if toMyLeft == false {
+			break
+		}
+	}
 	return i
+}
+
+func (i *Int) fromDigitPerspective(digit int) bool {
+	val := i.List[digit]
+
+	if val == 8 {
+		i.List[digit] = 0
+		return true
+	}
+	i.List[digit]++
+	return false
 }
 
 /*
