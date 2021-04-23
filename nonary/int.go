@@ -1,13 +1,28 @@
 package nonary
 
+import (
+	"fmt"
+	"strings"
+)
+
 type Int struct {
 	List []byte
 }
 
-func NewInt(a int) *Int {
+func NewInt() *Int {
 	n := Int{}
 	n.List = []byte{0}
 	return &n
+}
+
+func (i *Int) String() string {
+
+	buff := []string{}
+	for _, b := range i.List {
+		buff = append(buff, fmt.Sprintf("%d", b))
+	}
+
+	return strings.Join(buff, "")
 }
 
 func (i *Int) Add(a int) {

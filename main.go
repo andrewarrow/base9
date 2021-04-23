@@ -6,8 +6,9 @@ import (
 )
 
 func main() {
-	thing := nonary.NewInt(0)
-	thing.Add(101)
-	thing.Add(-91)
-	fmt.Println(thing)
+	thing := nonary.NewInt()
+	for i := 0; i < 100; i++ {
+		thing.Add(1)
+		fmt.Println(thing.String())
+	}
 }
